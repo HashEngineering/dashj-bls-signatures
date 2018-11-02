@@ -22,14 +22,12 @@ public class DashBlsJni {
 
         SWIGTYPE_p_uint8_t _seed = null;
 
-        PrivateKey sk = PrivateKey.FromSeed(_seed, seed.length);
+        PrivateKey sk = PrivateKey.FromSeed(seed, seed.length);
         SWIGTYPE_p_PublicKey swigtype_p_publicKey = sk.GetPublicKey();
 
         byte msg[] = {100, 2, 54, 88, 90, 45, 23}; //!!! 254 changed to 54 !!!
 
-        SWIGTYPE_p_uint8_t _msg = null;
-
-        SWIGTYPE_p_Signature sign = sk.Sign(_msg, msg.length);
+        SWIGTYPE_p_Signature sign = sk.Sign(msg, msg.length);
     }
 
 }

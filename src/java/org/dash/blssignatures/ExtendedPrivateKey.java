@@ -35,36 +35,36 @@ public class ExtendedPrivateKey {
     }
   }
 
-  public static ExtendedPrivateKey FromSeed(SWIGTYPE_p_uint8_t seed, long seedLen) {
-    return new ExtendedPrivateKey(blssignaturesJNI.ExtendedPrivateKey_FromSeed(SWIGTYPE_p_uint8_t.getCPtr(seed), seedLen), true);
+  public static ExtendedPrivateKey FromSeed(byte[] seed, long seedLen) {
+    return new ExtendedPrivateKey(blssignaturesJNI.ExtendedPrivateKey_FromSeed(seed, seedLen), true);
   }
 
-  public static ExtendedPrivateKey FromBytes(SWIGTYPE_p_uint8_t serialized) {
-    return new ExtendedPrivateKey(blssignaturesJNI.ExtendedPrivateKey_FromBytes(SWIGTYPE_p_uint8_t.getCPtr(serialized)), true);
+  public static ExtendedPrivateKey FromBytes(byte[] serialized) {
+    return new ExtendedPrivateKey(blssignaturesJNI.ExtendedPrivateKey_FromBytes(serialized), true);
   }
 
-  public ExtendedPrivateKey PrivateChild(SWIGTYPE_p_uint32_t i) {
-    return new ExtendedPrivateKey(blssignaturesJNI.ExtendedPrivateKey_PrivateChild(swigCPtr, this, SWIGTYPE_p_uint32_t.getCPtr(i)), true);
+  public ExtendedPrivateKey PrivateChild(long i) {
+    return new ExtendedPrivateKey(blssignaturesJNI.ExtendedPrivateKey_PrivateChild(swigCPtr, this, i), true);
   }
 
-  public SWIGTYPE_p_ExtendedPublicKey PublicChild(SWIGTYPE_p_uint32_t i) {
-    return new SWIGTYPE_p_ExtendedPublicKey(blssignaturesJNI.ExtendedPrivateKey_PublicChild(swigCPtr, this, SWIGTYPE_p_uint32_t.getCPtr(i)), true);
+  public SWIGTYPE_p_ExtendedPublicKey PublicChild(long i) {
+    return new SWIGTYPE_p_ExtendedPublicKey(blssignaturesJNI.ExtendedPrivateKey_PublicChild(swigCPtr, this, i), true);
   }
 
-  public SWIGTYPE_p_uint32_t GetVersion() {
-    return new SWIGTYPE_p_uint32_t(blssignaturesJNI.ExtendedPrivateKey_GetVersion(swigCPtr, this), true);
+  public long GetVersion() {
+    return blssignaturesJNI.ExtendedPrivateKey_GetVersion(swigCPtr, this);
   }
 
-  public SWIGTYPE_p_uint8_t GetDepth() {
-    return new SWIGTYPE_p_uint8_t(blssignaturesJNI.ExtendedPrivateKey_GetDepth(swigCPtr, this), true);
+  public short GetDepth() {
+    return blssignaturesJNI.ExtendedPrivateKey_GetDepth(swigCPtr, this);
   }
 
-  public SWIGTYPE_p_uint32_t GetParentFingerprint() {
-    return new SWIGTYPE_p_uint32_t(blssignaturesJNI.ExtendedPrivateKey_GetParentFingerprint(swigCPtr, this), true);
+  public long GetParentFingerprint() {
+    return blssignaturesJNI.ExtendedPrivateKey_GetParentFingerprint(swigCPtr, this);
   }
 
-  public SWIGTYPE_p_uint32_t GetChildNumber() {
-    return new SWIGTYPE_p_uint32_t(blssignaturesJNI.ExtendedPrivateKey_GetChildNumber(swigCPtr, this), true);
+  public long GetChildNumber() {
+    return blssignaturesJNI.ExtendedPrivateKey_GetChildNumber(swigCPtr, this);
   }
 
   public ChainCode GetChainCode() {
@@ -83,13 +83,13 @@ public class ExtendedPrivateKey {
     return new SWIGTYPE_p_ExtendedPublicKey(blssignaturesJNI.ExtendedPrivateKey_GetExtendedPublicKey(swigCPtr, this), true);
   }
 
-  public void Serialize(SWIGTYPE_p_uint8_t buffer) {
-    blssignaturesJNI.ExtendedPrivateKey_Serialize__SWIG_0(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(buffer));
+  public void Serialize(byte[] buffer) {
+    blssignaturesJNI.ExtendedPrivateKey_Serialize__SWIG_0(swigCPtr, this, buffer);
   }
 
-  public SWIGTYPE_p_std__vectorT_uint8_t_t Serialize() {
-    return new SWIGTYPE_p_std__vectorT_uint8_t_t(blssignaturesJNI.ExtendedPrivateKey_Serialize__SWIG_1(swigCPtr, this), true);
+  public SWIGTYPE_p_std__vectorT_unsigned_char_t Serialize() {
+    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.ExtendedPrivateKey_Serialize__SWIG_1(swigCPtr, this), true);
   }
 
-  public final static SWIGTYPE_p_uint32_t EXTENDED_PRIVATE_KEY_SIZE = new SWIGTYPE_p_uint32_t(blssignaturesJNI.ExtendedPrivateKey_EXTENDED_PRIVATE_KEY_SIZE_get(), false);
+  public final static long EXTENDED_PRIVATE_KEY_SIZE = blssignaturesJNI.ExtendedPrivateKey_EXTENDED_PRIVATE_KEY_SIZE_get();
 }

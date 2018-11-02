@@ -51,8 +51,8 @@ public class BLS {
     blssignaturesJNI.BLS_Clean();
   }
 
-  public static void HashPubKeys(SWIGTYPE_p_bn_t output, long numOutputs, SWIGTYPE_p_std__vectorT_uint8_t_p_t serPubKeys, SWIGTYPE_p_std__vectorT_size_t_t sortedIndices) {
-    blssignaturesJNI.BLS_HashPubKeys(SWIGTYPE_p_bn_t.getCPtr(output), numOutputs, SWIGTYPE_p_std__vectorT_uint8_t_p_t.getCPtr(serPubKeys), SWIGTYPE_p_std__vectorT_size_t_t.getCPtr(sortedIndices));
+  public static void HashPubKeys(SWIGTYPE_p_bn_t output, long numOutputs, ByteArrayVec serPubKeys, SWIGTYPE_p_std__vectorT_size_t_t sortedIndices) {
+    blssignaturesJNI.BLS_HashPubKeys(SWIGTYPE_p_bn_t.getCPtr(output), numOutputs, ByteArrayVec.getCPtr(serPubKeys), serPubKeys, SWIGTYPE_p_std__vectorT_size_t_t.getCPtr(sortedIndices));
   }
 
   public static void CheckRelicErrors() {

@@ -35,16 +35,16 @@ public class PrivateKey {
     }
   }
 
-  public static PrivateKey FromSeed(SWIGTYPE_p_uint8_t seed, long seedLen) {
-    return new PrivateKey(blssignaturesJNI.PrivateKey_FromSeed(SWIGTYPE_p_uint8_t.getCPtr(seed), seedLen), true);
+  public static PrivateKey FromSeed(byte[] seed, long seedLen) {
+    return new PrivateKey(blssignaturesJNI.PrivateKey_FromSeed(seed, seedLen), true);
   }
 
-  public static PrivateKey FromBytes(SWIGTYPE_p_uint8_t bytes, boolean modOrder) {
-    return new PrivateKey(blssignaturesJNI.PrivateKey_FromBytes__SWIG_0(SWIGTYPE_p_uint8_t.getCPtr(bytes), modOrder), true);
+  public static PrivateKey FromBytes(byte[] bytes, boolean modOrder) {
+    return new PrivateKey(blssignaturesJNI.PrivateKey_FromBytes__SWIG_0(bytes, modOrder), true);
   }
 
-  public static PrivateKey FromBytes(SWIGTYPE_p_uint8_t bytes) {
-    return new PrivateKey(blssignaturesJNI.PrivateKey_FromBytes__SWIG_1(SWIGTYPE_p_uint8_t.getCPtr(bytes)), true);
+  public static PrivateKey FromBytes(byte[] bytes) {
+    return new PrivateKey(blssignaturesJNI.PrivateKey_FromBytes__SWIG_1(bytes), true);
   }
 
   public PrivateKey(PrivateKey k) {
@@ -55,36 +55,36 @@ public class PrivateKey {
     return new SWIGTYPE_p_PublicKey(blssignaturesJNI.PrivateKey_GetPublicKey(swigCPtr, this), true);
   }
 
-  public static PrivateKey AggregateInsecure(SWIGTYPE_p_std__vectorT_bls__PrivateKey_t privateKeys) {
-    return new PrivateKey(blssignaturesJNI.PrivateKey_AggregateInsecure(SWIGTYPE_p_std__vectorT_bls__PrivateKey_t.getCPtr(privateKeys)), true);
+  public static PrivateKey AggregateInsecure(PrivateKeyVec privateKeys) {
+    return new PrivateKey(blssignaturesJNI.PrivateKey_AggregateInsecure(PrivateKeyVec.getCPtr(privateKeys), privateKeys), true);
   }
 
-  public static PrivateKey Aggregate(SWIGTYPE_p_std__vectorT_bls__PrivateKey_t privateKeys, SWIGTYPE_p_std__vectorT_PublicKey_t pubKeys) {
-    return new PrivateKey(blssignaturesJNI.PrivateKey_Aggregate(SWIGTYPE_p_std__vectorT_bls__PrivateKey_t.getCPtr(privateKeys), SWIGTYPE_p_std__vectorT_PublicKey_t.getCPtr(pubKeys)), true);
+  public static PrivateKey Aggregate(PrivateKeyVec privateKeys, SWIGTYPE_p_std__vectorT_PublicKey_t pubKeys) {
+    return new PrivateKey(blssignaturesJNI.PrivateKey_Aggregate(PrivateKeyVec.getCPtr(privateKeys), privateKeys, SWIGTYPE_p_std__vectorT_PublicKey_t.getCPtr(pubKeys)), true);
   }
 
-  public void Serialize(SWIGTYPE_p_uint8_t buffer) {
-    blssignaturesJNI.PrivateKey_Serialize__SWIG_0(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(buffer));
+  public void Serialize(byte[] buffer) {
+    blssignaturesJNI.PrivateKey_Serialize__SWIG_0(swigCPtr, this, buffer);
   }
 
-  public SWIGTYPE_p_std__vectorT_uint8_t_t Serialize() {
-    return new SWIGTYPE_p_std__vectorT_uint8_t_t(blssignaturesJNI.PrivateKey_Serialize__SWIG_1(swigCPtr, this), true);
+  public SWIGTYPE_p_std__vectorT_unsigned_char_t Serialize() {
+    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.PrivateKey_Serialize__SWIG_1(swigCPtr, this), true);
   }
 
-  public SWIGTYPE_p_InsecureSignature SignInsecure(SWIGTYPE_p_uint8_t msg, long len) {
-    return new SWIGTYPE_p_InsecureSignature(blssignaturesJNI.PrivateKey_SignInsecure(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(msg), len), true);
+  public SWIGTYPE_p_InsecureSignature SignInsecure(byte[] msg, long len) {
+    return new SWIGTYPE_p_InsecureSignature(blssignaturesJNI.PrivateKey_SignInsecure(swigCPtr, this, msg, len), true);
   }
 
-  public SWIGTYPE_p_InsecureSignature SignInsecurePrehashed(SWIGTYPE_p_uint8_t hash) {
-    return new SWIGTYPE_p_InsecureSignature(blssignaturesJNI.PrivateKey_SignInsecurePrehashed(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(hash)), true);
+  public SWIGTYPE_p_InsecureSignature SignInsecurePrehashed(byte[] hash) {
+    return new SWIGTYPE_p_InsecureSignature(blssignaturesJNI.PrivateKey_SignInsecurePrehashed(swigCPtr, this, hash), true);
   }
 
-  public SWIGTYPE_p_Signature Sign(SWIGTYPE_p_uint8_t msg, long len) {
-    return new SWIGTYPE_p_Signature(blssignaturesJNI.PrivateKey_Sign(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(msg), len), true);
+  public SWIGTYPE_p_Signature Sign(byte[] msg, long len) {
+    return new SWIGTYPE_p_Signature(blssignaturesJNI.PrivateKey_Sign(swigCPtr, this, msg, len), true);
   }
 
-  public SWIGTYPE_p_Signature SignPrehashed(SWIGTYPE_p_uint8_t hash) {
-    return new SWIGTYPE_p_Signature(blssignaturesJNI.PrivateKey_SignPrehashed(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(hash)), true);
+  public SWIGTYPE_p_Signature SignPrehashed(byte[] hash) {
+    return new SWIGTYPE_p_Signature(blssignaturesJNI.PrivateKey_SignPrehashed(swigCPtr, this, hash), true);
   }
 
   public final static long PRIVATE_KEY_SIZE = blssignaturesJNI.PrivateKey_PRIVATE_KEY_SIZE_get();

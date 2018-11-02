@@ -35,8 +35,8 @@ public class PublicKey {
     }
   }
 
-  public static PublicKey FromBytes(SWIGTYPE_p_uint8_t key) {
-    return new PublicKey(blssignaturesJNI.PublicKey_FromBytes(SWIGTYPE_p_uint8_t.getCPtr(key)), true);
+  public static PublicKey FromBytes(byte[] key) {
+    return new PublicKey(blssignaturesJNI.PublicKey_FromBytes(key), true);
   }
 
   public static PublicKey FromG1(SWIGTYPE_p_g1_t key) {
@@ -47,24 +47,24 @@ public class PublicKey {
     this(blssignaturesJNI.new_PublicKey(PublicKey.getCPtr(pubKey), pubKey), true);
   }
 
-  public static PublicKey AggregateInsecure(SWIGTYPE_p_std__vectorT_bls__PublicKey_t pubKeys) {
-    return new PublicKey(blssignaturesJNI.PublicKey_AggregateInsecure(SWIGTYPE_p_std__vectorT_bls__PublicKey_t.getCPtr(pubKeys)), true);
+  public static PublicKey AggregateInsecure(PublicKeyVec pubKeys) {
+    return new PublicKey(blssignaturesJNI.PublicKey_AggregateInsecure(PublicKeyVec.getCPtr(pubKeys), pubKeys), true);
   }
 
-  public static PublicKey Aggregate(SWIGTYPE_p_std__vectorT_bls__PublicKey_t pubKeys) {
-    return new PublicKey(blssignaturesJNI.PublicKey_Aggregate(SWIGTYPE_p_std__vectorT_bls__PublicKey_t.getCPtr(pubKeys)), true);
+  public static PublicKey Aggregate(PublicKeyVec pubKeys) {
+    return new PublicKey(blssignaturesJNI.PublicKey_Aggregate(PublicKeyVec.getCPtr(pubKeys), pubKeys), true);
   }
 
-  public void Serialize(SWIGTYPE_p_uint8_t buffer) {
-    blssignaturesJNI.PublicKey_Serialize__SWIG_0(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(buffer));
+  public void Serialize(byte[] buffer) {
+    blssignaturesJNI.PublicKey_Serialize__SWIG_0(swigCPtr, this, buffer);
   }
 
-  public SWIGTYPE_p_std__vectorT_uint8_t_t Serialize() {
-    return new SWIGTYPE_p_std__vectorT_uint8_t_t(blssignaturesJNI.PublicKey_Serialize__SWIG_1(swigCPtr, this), true);
+  public SWIGTYPE_p_std__vectorT_unsigned_char_t Serialize() {
+    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.PublicKey_Serialize__SWIG_1(swigCPtr, this), true);
   }
 
-  public SWIGTYPE_p_uint32_t GetFingerprint() {
-    return new SWIGTYPE_p_uint32_t(blssignaturesJNI.PublicKey_GetFingerprint(swigCPtr, this), true);
+  public long GetFingerprint() {
+    return blssignaturesJNI.PublicKey_GetFingerprint(swigCPtr, this);
   }
 
   public final static long PUBLIC_KEY_SIZE = blssignaturesJNI.PublicKey_PUBLIC_KEY_SIZE_get();

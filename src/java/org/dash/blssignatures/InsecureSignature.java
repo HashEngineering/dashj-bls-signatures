@@ -35,8 +35,8 @@ public class InsecureSignature {
     }
   }
 
-  public static InsecureSignature FromBytes(SWIGTYPE_p_uint8_t data) {
-    return new InsecureSignature(blssignaturesJNI.InsecureSignature_FromBytes(SWIGTYPE_p_uint8_t.getCPtr(data)), true);
+  public static InsecureSignature FromBytes(SWIGTYPE_p_unsigned_char data) {
+    return new InsecureSignature(blssignaturesJNI.InsecureSignature_FromBytes(SWIGTYPE_p_unsigned_char.getCPtr(data)), true);
   }
 
   public static InsecureSignature FromG2(SWIGTYPE_p_g2_t element) {
@@ -47,8 +47,8 @@ public class InsecureSignature {
     this(blssignaturesJNI.new_InsecureSignature(InsecureSignature.getCPtr(signature), signature), true);
   }
 
-  public boolean Verify(SWIGTYPE_p_std__vectorT_uint8_t_const_p_t hashes, SWIGTYPE_p_std__vectorT_bls__PublicKey_t pubKeys) {
-    return blssignaturesJNI.InsecureSignature_Verify(swigCPtr, this, SWIGTYPE_p_std__vectorT_uint8_t_const_p_t.getCPtr(hashes), SWIGTYPE_p_std__vectorT_bls__PublicKey_t.getCPtr(pubKeys));
+  public boolean Verify(SWIGTYPE_p_std__vectorT_unsigned_char_const_p_t hashes, PublicKeyVec pubKeys) {
+    return blssignaturesJNI.InsecureSignature_Verify(swigCPtr, this, SWIGTYPE_p_std__vectorT_unsigned_char_const_p_t.getCPtr(hashes), PublicKeyVec.getCPtr(pubKeys), pubKeys);
   }
 
   public static InsecureSignature Aggregate(SWIGTYPE_p_std__vectorT_bls__InsecureSignature_t sigs) {
@@ -59,12 +59,12 @@ public class InsecureSignature {
     return new InsecureSignature(blssignaturesJNI.InsecureSignature_DivideBy(swigCPtr, this, SWIGTYPE_p_std__vectorT_bls__InsecureSignature_t.getCPtr(sigs)), true);
   }
 
-  public void Serialize(SWIGTYPE_p_uint8_t buffer) {
-    blssignaturesJNI.InsecureSignature_Serialize__SWIG_0(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(buffer));
+  public void Serialize(byte[] buffer) {
+    blssignaturesJNI.InsecureSignature_Serialize__SWIG_0(swigCPtr, this, buffer);
   }
 
-  public SWIGTYPE_p_std__vectorT_uint8_t_t Serialize() {
-    return new SWIGTYPE_p_std__vectorT_uint8_t_t(blssignaturesJNI.InsecureSignature_Serialize__SWIG_1(swigCPtr, this), true);
+  public SWIGTYPE_p_std__vectorT_unsigned_char_t Serialize() {
+    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.InsecureSignature_Serialize__SWIG_1(swigCPtr, this), true);
   }
 
   public final static long SIGNATURE_SIZE = blssignaturesJNI.InsecureSignature_SIGNATURE_SIZE_get();

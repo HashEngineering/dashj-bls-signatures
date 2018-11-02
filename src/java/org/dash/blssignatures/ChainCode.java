@@ -35,20 +35,20 @@ public class ChainCode {
     }
   }
 
-  public static ChainCode FromBytes(SWIGTYPE_p_uint8_t bytes) {
-    return new ChainCode(blssignaturesJNI.ChainCode_FromBytes(SWIGTYPE_p_uint8_t.getCPtr(bytes)), true);
+  public static ChainCode FromBytes(byte[] bytes) {
+    return new ChainCode(blssignaturesJNI.ChainCode_FromBytes(bytes), true);
   }
 
   public ChainCode(ChainCode cc) {
     this(blssignaturesJNI.new_ChainCode(ChainCode.getCPtr(cc), cc), true);
   }
 
-  public void Serialize(SWIGTYPE_p_uint8_t buffer) {
-    blssignaturesJNI.ChainCode_Serialize__SWIG_0(swigCPtr, this, SWIGTYPE_p_uint8_t.getCPtr(buffer));
+  public void Serialize(byte[] buffer) {
+    blssignaturesJNI.ChainCode_Serialize__SWIG_0(swigCPtr, this, buffer);
   }
 
-  public SWIGTYPE_p_std__vectorT_uint8_t_t Serialize() {
-    return new SWIGTYPE_p_std__vectorT_uint8_t_t(blssignaturesJNI.ChainCode_Serialize__SWIG_1(swigCPtr, this), true);
+  public SWIGTYPE_p_std__vectorT_unsigned_char_t Serialize() {
+    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.ChainCode_Serialize__SWIG_1(swigCPtr, this), true);
   }
 
   public final static long CHAIN_CODE_SIZE = blssignaturesJNI.ChainCode_CHAIN_CODE_SIZE_get();

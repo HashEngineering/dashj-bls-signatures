@@ -33,8 +33,8 @@ add_library( # Sets the name of the library.
 # you want to add. CMake verifies that the library exists before
 # completing its build.
 
-include_directories(/cygdrive/c/Program\ Files\/Java/jdk1.8.0_181/include 
-					/cygdrive/c/Program\ Files\/Java/jdk1.8.0_181/include/win32
+include_directories(/usr/lib/jvm/java-8-oracle/include
+					/usr/lib/jvm/java-8-oracle/include/linux
 					${CMAKE_SOURCE_DIR}/src
 					${CMAKE_SOURCE_DIR}/src/bls-signatures/src
 					${CMAKE_SOURCE_DIR}/src/bls-signatures/build/contrib/relic/include
