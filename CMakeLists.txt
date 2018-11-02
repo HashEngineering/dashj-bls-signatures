@@ -5,6 +5,9 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
+
 add_library( # Sets the name of the library.
         dashjbls
 
@@ -13,6 +16,16 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         src/cpp/bls-signature-wrapper.cpp)
+
+add_library( # Sets the name of the library.
+        dashjblssimple
+
+        # Sets the library as a shared library.
+        SHARED
+
+        # Provides a relative path to your source file(s).
+        src/cpp/org_dash_bls_DashBlsJni.cpp
+)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -23,6 +36,7 @@ add_library( # Sets the name of the library.
 include_directories(/cygdrive/c/Program\ Files\/Java/jdk1.8.0_181/include 
 					/cygdrive/c/Program\ Files\/Java/jdk1.8.0_181/include/win32
 					${CMAKE_SOURCE_DIR}/src
+					${CMAKE_SOURCE_DIR}/src/bls-signatures/src
 					${CMAKE_SOURCE_DIR}/src/bls-signatures/build/contrib/relic/include
 					${CMAKE_SOURCE_DIR}/src/bls-signatures/contrib/relic/include
 )
@@ -48,6 +62,13 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
         dashjbls
+
+        # Links the target library to the log library
+        # included in the NDK.
+        ${CMAKE_SOURCE_DIR}/src/bls-signatures/build/libbls.a)
+
+target_link_libraries( # Specifies the target library.
+        dashjblssimple
 
         # Links the target library to the log library
         # included in the NDK.
