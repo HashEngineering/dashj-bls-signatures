@@ -4,7 +4,8 @@ cmake_minimum_required(VERSION 3.4.1)
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
-
+   #SET (CMAKE_C_COMPILER             "/usr/bin/clang")
+   #SET (CMAKE_CXX_COMPILER             "/usr/bin/clang++")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -Wl,-Bsymbolic-functions")
@@ -122,7 +123,7 @@ target_link_libraries( # Specifies the target library.
 target_link_libraries( # Specifies the target library.
         blswrapper
 
-        # Links the target library to the log library
+        # Links the target library to the bls library
         # included in the NDK.
         ${CMAKE_SOURCE_DIR}/src/bls-signatures/build/libbls.a)
 

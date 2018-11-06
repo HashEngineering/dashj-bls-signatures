@@ -10,7 +10,7 @@
 # endif
 #endif
 
-#include "org_dash_bls_DashBlsJni.h"
+#include "org_dash_bls_BLSPublicKey.h"
 #include <iostream>
 #include "bls.hpp"
 
