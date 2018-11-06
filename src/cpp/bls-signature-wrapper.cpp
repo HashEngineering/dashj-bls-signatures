@@ -283,7 +283,7 @@ SWIGINTERN std::vector< unsigned char * >::const_reference std_vector_Sl_uint8_t
                 return self->at(i);
             }
 SWIGINTERN std::vector< unsigned char * >::value_type std_vector_Sl_uint8_t_Sm__Sg__set(std::vector< uint8_t * > *self,int i,std::vector< unsigned char * >::value_type const &VECTOR_VALUE_IN){
-                unsigned char * old = self->at(i);
+                const unsigned char * old = self->at(i);
                 self->at(i) = VECTOR_VALUE_IN;
                 return old;
             }
@@ -297,7 +297,7 @@ SWIGINTERN std::vector< bn_t * >::const_reference std_vector_Sl_bn_t_Sm__Sg__get
                 return self->at(i);
             }
 SWIGINTERN std::vector< bn_t * >::value_type std_vector_Sl_bn_t_Sm__Sg__set(std::vector< bn_t * > *self,int i,std::vector< bn_t * >::value_type const &VECTOR_VALUE_IN){
-                bn_t * old = self->at(i);
+                const bn_t * old = self->at(i);
                 self->at(i) = VECTOR_VALUE_IN;
                 return old;
             }
@@ -586,14 +586,14 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
   uint32_t arg2 ;
-  //ExtendedPublicKey result;
+  ExtendedPublicKey result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(bls::ExtendedPrivateKey **)&jarg1; 
   arg2 = (uint32_t)jarg2; 
-  ExtendedPublicKey result = ((bls::ExtendedPrivateKey const *)arg1)->PublicChild(arg2);
+  result = ((bls::ExtendedPrivateKey const *)arg1)->PublicChild(arg2);
   *(ExtendedPublicKey **)&jresult = new ExtendedPublicKey((const ExtendedPublicKey &)result); 
   return jresult;
 }
@@ -677,13 +677,13 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPrivateKey_1GetPrivateKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
-  //PrivateKey result;
+  PrivateKey result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(bls::ExtendedPrivateKey **)&jarg1; 
-  PrivateKey result = ((bls::ExtendedPrivateKey const *)arg1)->GetPrivateKey();
+  result = ((bls::ExtendedPrivateKey const *)arg1)->GetPrivateKey();
   *(PrivateKey **)&jresult = new PrivateKey((const PrivateKey &)result); 
   return jresult;
 }
@@ -692,13 +692,13 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPrivateKey_1GetPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
-  //PublicKey result;
+  PublicKey result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(bls::ExtendedPrivateKey **)&jarg1; 
-  PublicKey result = ((bls::ExtendedPrivateKey const *)arg1)->GetPublicKey();
+  result = ((bls::ExtendedPrivateKey const *)arg1)->GetPublicKey();
   *(PublicKey **)&jresult = new PublicKey((const PublicKey &)result); 
   return jresult;
 }
@@ -707,13 +707,13 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPrivateKey_1GetExtendedPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
-  //ExtendedPublicKey result;
+  ExtendedPublicKey result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(bls::ExtendedPrivateKey **)&jarg1; 
-  ExtendedPublicKey result = ((bls::ExtendedPrivateKey const *)arg1)->GetExtendedPublicKey();
+  result = ((bls::ExtendedPrivateKey const *)arg1)->GetExtendedPublicKey();
   *(ExtendedPublicKey **)&jresult = new ExtendedPublicKey((const ExtendedPublicKey &)result); 
   return jresult;
 }
@@ -902,13 +902,13 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPu
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPublicKey_1GetPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPublicKey *arg1 = (bls::ExtendedPublicKey *) 0 ;
-  //PublicKey result;
+  PublicKey result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(bls::ExtendedPublicKey **)&jarg1; 
-  PublicKey result = ((bls::ExtendedPublicKey const *)arg1)->GetPublicKey();
+  result = ((bls::ExtendedPublicKey const *)arg1)->GetPublicKey();
   *(PublicKey **)&jresult = new PublicKey((const PublicKey &)result); 
   return jresult;
 }
@@ -1066,13 +1066,13 @@ SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_delete_1Pri
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey_1GetPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
-  //PublicKey result;
+  PublicKey result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(bls::PrivateKey **)&jarg1; 
-  PublicKey result = ((bls::PrivateKey const *)arg1)->GetPublicKey();
+  result = ((bls::PrivateKey const *)arg1)->GetPublicKey();
   *(PublicKey **)&jresult = new PublicKey((const PublicKey &)result); 
   return jresult;
 }
@@ -1161,7 +1161,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
   size_t arg3 ;
-  //InsecureSignature result;
+  InsecureSignature result;
   
   (void)jenv;
   (void)jcls;
@@ -1171,7 +1171,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
     arg2 = (uint8_t *) jenv->GetByteArrayElements(jarg2, 0);
   }
   arg3 = (size_t)jarg3; 
-  InsecureSignature result = ((bls::PrivateKey const *)arg1)->SignInsecure((uint8_t const *)arg2,arg3);
+  result = ((bls::PrivateKey const *)arg1)->SignInsecure((uint8_t const *)arg2,arg3);
   *(InsecureSignature **)&jresult = new InsecureSignature((const InsecureSignature &)result); 
   {
     jenv->ReleaseByteArrayElements(jarg2, (jbyte *) arg2, 0);
@@ -1185,7 +1185,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   jlong jresult = 0 ;
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
-  //InsecureSignature result;
+  InsecureSignature result;
   
   (void)jenv;
   (void)jcls;
@@ -1194,7 +1194,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   {
     arg2 = (uint8_t *) jenv->GetByteArrayElements(jarg2, 0);
   }
-  InsecureSignature result = ((bls::PrivateKey const *)arg1)->SignInsecurePrehashed((uint8_t const *)arg2);
+  result = ((bls::PrivateKey const *)arg1)->SignInsecurePrehashed((uint8_t const *)arg2);
   *(InsecureSignature **)&jresult = new InsecureSignature((const InsecureSignature &)result); 
   {
     jenv->ReleaseByteArrayElements(jarg2, (jbyte *) arg2, 0);
@@ -1209,7 +1209,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
   size_t arg3 ;
-  //Signature result;
+  Signature result;
   
   (void)jenv;
   (void)jcls;
@@ -1219,7 +1219,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
     arg2 = (uint8_t *) jenv->GetByteArrayElements(jarg2, 0);
   }
   arg3 = (size_t)jarg3; 
-  Signature result = ((bls::PrivateKey const *)arg1)->Sign((uint8_t const *)arg2,arg3);
+  result = ((bls::PrivateKey const *)arg1)->Sign((uint8_t const *)arg2,arg3);
   *(Signature **)&jresult = new Signature((const Signature &)result); 
   {
     jenv->ReleaseByteArrayElements(jarg2, (jbyte *) arg2, 0);
@@ -1233,6 +1233,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   jlong jresult = 0 ;
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
+  Signature result;
   
   (void)jenv;
   (void)jcls;
@@ -1241,7 +1242,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   {
     arg2 = (uint8_t *) jenv->GetByteArrayElements(jarg2, 0);
   }
-  Signature result = ((bls::PrivateKey const *)arg1)->SignPrehashed((uint8_t const *)arg2);
+  result = ((bls::PrivateKey const *)arg1)->SignPrehashed((uint8_t const *)arg2);
   *(Signature **)&jresult = new Signature((const Signature &)result); 
   {
     jenv->ReleaseByteArrayElements(jarg2, (jbyte *) arg2, 0);

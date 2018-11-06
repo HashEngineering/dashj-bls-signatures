@@ -8,7 +8,7 @@
 #include "bls-signatures/src/publickey.hpp"
 #include "bls-signatures/src/signature.hpp"
 #include "bls-signatures/src/aggregationinfo.hpp"
-using namespace bls; //this fixes many undefined symbols
+#include "cpp/bls.h"
 %}
 
 
@@ -95,22 +95,16 @@ namespace bls {
 
 };
 
-%include "bls-signatures/src/bls.hpp"
-%include "bls-signatures/src/chaincode.hpp"
-%include "bls-signatures/src/extendedprivatekey.hpp"
-%include "bls-signatures/src/extendedpublickey.hpp"
-%include "bls-signatures/src/privatekey.hpp"
-%include "bls-signatures/src/publickey.hpp"
-%include "bls-signatures/src/signature.hpp"
-%include "bls-signatures/src/aggregationinfo.hpp"
+%include "cpp/bls.h"
 
+/*
 %template(PublicKeyVec) std::vector<bls::PublicKey>;
 %template(PrivateKeyVec) std::vector<bls::PrivateKey>;
 %template(ByteArrayVec) std::vector<uint8_t*>;
 %template(BigIntegerVec) std::vector<bn_t*>;
 %template(PrivateKeyVec) std::vector<bls::AggregationInfo>;
-
-
+*/
+%template(CBLSPrivateKey) CBLSWrapper< bls::PrivateKey,int,CBLSSecretKey >;
 
 // declaration of class X, e.g. %include X.h
 /*
