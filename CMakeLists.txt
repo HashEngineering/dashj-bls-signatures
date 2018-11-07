@@ -12,14 +12,14 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
     set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "${CMAKE_SHARED_LIBRARY_LINK_C_FLAGS} -static-libgcc -s")
     set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -static-libgcc -static-libstdc++ -s")
 
-#add_library( # Sets the name of the library.
-#        dashjbls
+add_library( # Sets the name of the library.
+        dashjbls
 
         # Sets the library as a shared library.
- #       SHARED
+       SHARED
 
         # Provides a relative path to your source file(s).
-#        src/cpp/bls-dash-core-wrapper.cpp)
+        src/cpp/dashj-bls-signature-wrapper.cpp)
 
 #add_library( # Sets the name of the library.
 #        dashcore-bls
@@ -99,12 +99,12 @@ find_library( # Sets the name of the path variable.
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
-#target_link_libraries( # Specifies the target library.
-#        dashjbls
+target_link_libraries( # Specifies the target library.
+        dashjbls
 
         # Links the target library to the log library
         # included in the NDK.
-#        ${CMAKE_SOURCE_DIR}/src/bls-signatures/build/libbls.a)
+        ${CMAKE_SOURCE_DIR}/src/bls-signatures/build/libbls.a)
 
 #target_link_libraries( # Specifies the target library.
 #        dashcore-bls
@@ -127,4 +127,4 @@ target_link_libraries( # Specifies the target library.
         # included in the NDK.
         ${CMAKE_SOURCE_DIR}/src/bls-signatures/build/libbls.a)
 
-target_link_libraries(blswrapper gcc stdc++)
+#target_link_libraries(blswrapper gcc stdc++)

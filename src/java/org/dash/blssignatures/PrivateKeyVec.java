@@ -46,10 +46,6 @@ public class PrivateKeyVec extends java.util.AbstractList<PrivateKey> {
     this(blssignaturesJNI.new_PrivateKeyVec__SWIG_0(), true);
   }
 
-  public PrivateKeyVec(long n) {
-    this(blssignaturesJNI.new_PrivateKeyVec__SWIG_1(n), true);
-  }
-
   public PrivateKeyVec(PrivateKeyVec o) {
     this(blssignaturesJNI.new_PrivateKeyVec__SWIG_2(PrivateKeyVec.getCPtr(o), o), true);
   }

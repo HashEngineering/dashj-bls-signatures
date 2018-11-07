@@ -46,10 +46,6 @@ public class PublicKeyVec extends java.util.AbstractList<PublicKey> {
     this(blssignaturesJNI.new_PublicKeyVec__SWIG_0(), true);
   }
 
-  public PublicKeyVec(long n) {
-    this(blssignaturesJNI.new_PublicKeyVec__SWIG_1(n), true);
-  }
-
   public PublicKeyVec(PublicKeyVec o) {
     this(blssignaturesJNI.new_PublicKeyVec__SWIG_2(PublicKeyVec.getCPtr(o), o), true);
   }

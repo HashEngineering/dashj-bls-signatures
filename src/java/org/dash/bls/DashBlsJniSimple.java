@@ -3,10 +3,7 @@ package org.dash.bls;
 public class DashBlsJniSimple {
 
     static {
-        System.loadLibrary("cygwin1");
-        System.loadLibrary("cyggcc_s-seh-1");
-        System.loadLibrary("cygstdc++-6");
-        System.loadLibrary("cygdashjblssimple");
+        System.loadLibrary("dashjblssimple");
     }
 
     public static void main(String[] args) {

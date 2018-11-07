@@ -13,19 +13,21 @@ public abstract class BLSObject {
 
     protected void finalize() throws Throwable {
         if(owner)
-            delete(objectPointer);
+            delete();
     }
 
-    protected void delete(long objectPointer)
+    protected void delete()
     {
         if (objectPointer != 0) {
             if (owner) {
                 owner = false;
-                blssignaturesJNI.delete_PublicKey(objectPointer);
+                delete(objectPointer);
             }
             objectPointer = 0;
         }
     }
+
+    protected abstract void delete(long objectPointer);
 
     public long getObjectPointer() {
         return objectPointer;

@@ -254,7 +254,7 @@ using namespace bls; //this fixes many undefined symbols
 SWIGINTERN std::vector< bls::PublicKey >::const_reference std_vector_Sl_bls_PublicKey_Sg__get(std::vector< bls::PublicKey > const *self,int i){
                 return self->at(i);
             }
-SWIGINTERN std::vector< bls::PublicKey >::value_type std_vector_Sl_bls_PublicKey_Sg__set(std::vector< bls::PublicKey > *self,int i,std::vector< bls::PublicKey >::value_type const &VECTOR_VALUE_IN){
+SWIGINTERN std::vector< bls::PublicKey >::value_type std_vector_Sl_bls_PublicKey_Sg__set(std::vector< bls::PublicKey > *self,int i,std::vector< bls::PublicKey >::value_type &VECTOR_VALUE_IN){
                 const bls::PublicKey old = self->at(i);
                 self->at(i) = VECTOR_VALUE_IN;
                 return old;
@@ -268,7 +268,7 @@ SWIGINTERN void std_vector_Sl_bls_PublicKey_Sg__removeRange(std::vector< bls::Pu
 SWIGINTERN std::vector< bls::PrivateKey >::const_reference std_vector_Sl_bls_PrivateKey_Sg__get(std::vector< bls::PrivateKey > const *self,int i){
                 return self->at(i);
             }
-SWIGINTERN std::vector< bls::PrivateKey >::value_type std_vector_Sl_bls_PrivateKey_Sg__set(std::vector< bls::PrivateKey > *self,int i,std::vector< bls::PrivateKey >::value_type const &VECTOR_VALUE_IN){
+SWIGINTERN std::vector< bls::PrivateKey >::value_type std_vector_Sl_bls_PrivateKey_Sg__set(std::vector< bls::PrivateKey > *self,int i,std::vector< bls::PrivateKey >::value_type &VECTOR_VALUE_IN){
                 const bls::PrivateKey old = self->at(i);
                 self->at(i) = VECTOR_VALUE_IN;
                 return old;
@@ -282,8 +282,8 @@ SWIGINTERN void std_vector_Sl_bls_PrivateKey_Sg__removeRange(std::vector< bls::P
 SWIGINTERN std::vector< unsigned char * >::const_reference std_vector_Sl_uint8_t_Sm__Sg__get(std::vector< uint8_t * > const *self,int i){
                 return self->at(i);
             }
-SWIGINTERN std::vector< unsigned char * >::value_type std_vector_Sl_uint8_t_Sm__Sg__set(std::vector< uint8_t * > *self,int i,std::vector< unsigned char * >::value_type const &VECTOR_VALUE_IN){
-                const unsigned char * old = self->at(i);
+SWIGINTERN std::vector< unsigned char * >::value_type std_vector_Sl_uint8_t_Sm__Sg__set(std::vector< uint8_t * > *self,int i,std::vector< unsigned char * >::value_type &VECTOR_VALUE_IN){
+                unsigned char * old = self->at(i);
                 self->at(i) = VECTOR_VALUE_IN;
                 return old;
             }
@@ -296,8 +296,8 @@ SWIGINTERN void std_vector_Sl_uint8_t_Sm__Sg__removeRange(std::vector< uint8_t *
 SWIGINTERN std::vector< bn_t * >::const_reference std_vector_Sl_bn_t_Sm__Sg__get(std::vector< bn_t * > const *self,int i){
                 return self->at(i);
             }
-SWIGINTERN std::vector< bn_t * >::value_type std_vector_Sl_bn_t_Sm__Sg__set(std::vector< bn_t * > *self,int i,std::vector< bn_t * >::value_type const &VECTOR_VALUE_IN){
-                const bn_t * old = self->at(i);
+SWIGINTERN std::vector< bn_t * >::value_type std_vector_Sl_bn_t_Sm__Sg__set(std::vector< bn_t * > *self,int i,std::vector< bn_t * >::value_type &VECTOR_VALUE_IN){
+                bn_t * old = self->at(i);
                 self->at(i) = VECTOR_VALUE_IN;
                 return old;
             }
@@ -586,7 +586,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
   uint32_t arg2 ;
-  ExtendedPublicKey result;
+  SwigValueWrapper< bls::ExtendedPublicKey > result;
   
   (void)jenv;
   (void)jcls;
@@ -677,7 +677,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPrivateKey_1GetPrivateKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
-  PrivateKey result;
+  SwigValueWrapper< bls::PrivateKey > result;
   
   (void)jenv;
   (void)jcls;
@@ -692,7 +692,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPrivateKey_1GetPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
-  PublicKey result;
+  SwigValueWrapper< bls::PublicKey > result;
   
   (void)jenv;
   (void)jcls;
@@ -707,7 +707,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPr
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPrivateKey_1GetExtendedPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPrivateKey *arg1 = (bls::ExtendedPrivateKey *) 0 ;
-  ExtendedPublicKey result;
+  SwigValueWrapper< bls::ExtendedPublicKey > result;
   
   (void)jenv;
   (void)jcls;
@@ -902,7 +902,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPu
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ExtendedPublicKey_1GetPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::ExtendedPublicKey *arg1 = (bls::ExtendedPublicKey *) 0 ;
-  PublicKey result;
+  SwigValueWrapper< bls::PublicKey > result;
   
   (void)jenv;
   (void)jcls;
@@ -1066,7 +1066,7 @@ SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_delete_1Pri
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey_1GetPublicKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
-  PublicKey result;
+  SwigValueWrapper< bls::PublicKey > result;
   
   (void)jenv;
   (void)jcls;
@@ -1161,7 +1161,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
   size_t arg3 ;
-  InsecureSignature result;
+  SwigValueWrapper< bls::InsecureSignature > result;
   
   (void)jenv;
   (void)jcls;
@@ -1185,7 +1185,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   jlong jresult = 0 ;
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
-  InsecureSignature result;
+  SwigValueWrapper< bls::InsecureSignature > result;
   
   (void)jenv;
   (void)jcls;
@@ -1209,7 +1209,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
   size_t arg3 ;
-  Signature result;
+  SwigValueWrapper< bls::Signature > result;
   
   (void)jenv;
   (void)jcls;
@@ -1233,7 +1233,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
   jlong jresult = 0 ;
   bls::PrivateKey *arg1 = (bls::PrivateKey *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
-  Signature result;
+  SwigValueWrapper< bls::Signature > result;
   
   (void)jenv;
   (void)jcls;
@@ -2115,20 +2115,6 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_new_1Publi
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_new_1PublicKeyVec_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  jlong jresult = 0 ;
-  std::vector< bls::PublicKey >::size_type arg1 ;
-  std::vector< bls::PublicKey > *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (std::vector< bls::PublicKey >::size_type)jarg1; 
-  result = (std::vector< bls::PublicKey > *)new std::vector< bls::PublicKey >(arg1);
-  *(std::vector< bls::PublicKey > **)&jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_new_1PublicKeyVec_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   std::vector< bls::PublicKey > *arg1 = 0 ;
@@ -2263,7 +2249,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PublicKeyV
     return 0;
   } 
   try {
-    result = std_vector_Sl_bls_PublicKey_Sg__set(arg1,arg2,(bls::PublicKey const &)*arg3);
+    result = std_vector_Sl_bls_PublicKey_Sg__set(arg1,arg2,(bls::PublicKey &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
@@ -2322,20 +2308,6 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_new_1Priva
   (void)jenv;
   (void)jcls;
   result = (std::vector< bls::PrivateKey > *)new std::vector< bls::PrivateKey >();
-  *(std::vector< bls::PrivateKey > **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_new_1PrivateKeyVec_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  jlong jresult = 0 ;
-  std::vector< bls::PrivateKey >::size_type arg1 ;
-  std::vector< bls::PrivateKey > *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (std::vector< bls::PrivateKey >::size_type)jarg1; 
-  result = (std::vector< bls::PrivateKey > *)new std::vector< bls::PrivateKey >(arg1);
   *(std::vector< bls::PrivateKey > **)&jresult = result; 
   return jresult;
 }
@@ -2475,7 +2447,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_PrivateKey
     return 0;
   } 
   try {
-    result = std_vector_Sl_bls_PrivateKey_Sg__set(arg1,arg2,(bls::PrivateKey const &)*arg3);
+    result = std_vector_Sl_bls_PrivateKey_Sg__set(arg1,arg2,(bls::PrivateKey &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
@@ -2681,7 +2653,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_ByteArrayV
   temp3 = *(std::vector< unsigned char * >::value_type *)&jarg3;
   arg3 = (std::vector< unsigned char * >::value_type *)&temp3; 
   try {
-    result = (std::vector< unsigned char * >::value_type)std_vector_Sl_uint8_t_Sm__Sg__set(arg1,arg2,(unsigned char *const &)*arg3);
+    result = (std::vector< unsigned char * >::value_type)std_vector_Sl_uint8_t_Sm__Sg__set(arg1,arg2,(unsigned char * &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
@@ -2887,7 +2859,7 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_BigInteger
   temp3 = *(std::vector< bn_t * >::value_type *)&jarg3;
   arg3 = (std::vector< bn_t * >::value_type *)&temp3; 
   try {
-    result = (std::vector< bn_t * >::value_type)std_vector_Sl_bn_t_Sm__Sg__set(arg1,arg2,(bn_t *const &)*arg3);
+    result = (std::vector< bn_t * >::value_type)std_vector_Sl_bn_t_Sm__Sg__set(arg1,arg2,(bn_t * &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());

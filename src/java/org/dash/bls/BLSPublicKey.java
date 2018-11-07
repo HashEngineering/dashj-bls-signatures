@@ -11,4 +11,8 @@ public class BLSPublicKey extends BLSObject {
     }
 
     native static long FromBytes(byte [] bytes);
+
+    protected void delete(long objectPointer) {
+        //blssignaturesJNI.delete_PublicKey(objectPointer);
+    }
 }
