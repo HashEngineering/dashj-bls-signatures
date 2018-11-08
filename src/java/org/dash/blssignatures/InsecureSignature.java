@@ -35,8 +35,8 @@ public class InsecureSignature {
     }
   }
 
-  public static InsecureSignature FromBytes(SWIGTYPE_p_unsigned_char data) {
-    return new InsecureSignature(blssignaturesJNI.InsecureSignature_FromBytes(SWIGTYPE_p_unsigned_char.getCPtr(data)), true);
+  public static InsecureSignature FromBytes(byte [] data) {
+    return new InsecureSignature(blssignaturesJNI.InsecureSignature_FromBytes(data), true);
   }
 
   public static InsecureSignature FromG2(SWIGTYPE_p_g2_t element) {
@@ -47,8 +47,8 @@ public class InsecureSignature {
     this(blssignaturesJNI.new_InsecureSignature(InsecureSignature.getCPtr(signature), signature), true);
   }
 
-  public boolean Verify(SWIGTYPE_p_std__vectorT_unsigned_char_const_p_t hashes, PublicKeyVec pubKeys) {
-    return blssignaturesJNI.InsecureSignature_Verify(swigCPtr, this, SWIGTYPE_p_std__vectorT_unsigned_char_const_p_t.getCPtr(hashes), PublicKeyVec.getCPtr(pubKeys), pubKeys);
+  public boolean Verify(SWIGTYPE_p_std__vectorT_unsigned_char_const_p_t hashes, PublicKeyVector pubKeys) {
+    return blssignaturesJNI.InsecureSignature_Verify(swigCPtr, this, SWIGTYPE_p_std__vectorT_unsigned_char_const_p_t.getCPtr(hashes), PublicKeyVector.getCPtr(pubKeys), pubKeys);
   }
 
   public static InsecureSignature Aggregate(SWIGTYPE_p_std__vectorT_bls__InsecureSignature_t sigs) {

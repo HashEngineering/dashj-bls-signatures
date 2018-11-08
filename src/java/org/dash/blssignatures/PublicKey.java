@@ -35,12 +35,12 @@ public class PublicKey extends BLSObject{
     this(blssignaturesJNI.new_PublicKey(PublicKey.getCPtr(pubKey), pubKey), true);
   }
 
-  public static PublicKey AggregateInsecure(PublicKeyVec pubKeys) {
-    return new PublicKey(blssignaturesJNI.PublicKey_AggregateInsecure(PublicKeyVec.getCPtr(pubKeys), pubKeys), true);
+  public static PublicKey AggregateInsecure(PublicKeyVector pubKeys) {
+    return new PublicKey(blssignaturesJNI.PublicKey_AggregateInsecure(PublicKeyVector.getCPtr(pubKeys), pubKeys), true);
   }
 
-  public static PublicKey Aggregate(PublicKeyVec pubKeys) {
-    return new PublicKey(blssignaturesJNI.PublicKey_Aggregate(PublicKeyVec.getCPtr(pubKeys), pubKeys), true);
+  public static PublicKey Aggregate(PublicKeyVector pubKeys) {
+    return new PublicKey(blssignaturesJNI.PublicKey_Aggregate(PublicKeyVector.getCPtr(pubKeys), pubKeys), true);
   }
 
   public void Serialize(byte[] buffer) {

@@ -22,12 +22,12 @@ public class Signature extends BLSObject {
         blssignaturesJNI.delete_Signature(cPointer);
   }
 
-  public static Signature FromBytes(SWIGTYPE_p_unsigned_char data) {
-    return new Signature(blssignaturesJNI.Signature_FromBytes__SWIG_0(SWIGTYPE_p_unsigned_char.getCPtr(data)), true);
+  public static Signature FromBytes(byte [] data) {
+    return new Signature(blssignaturesJNI.Signature_FromBytes__SWIG_0(data), true);
   }
 
-  public static Signature FromBytes(SWIGTYPE_p_unsigned_char data, SWIGTYPE_p_AggregationInfo info) {
-    return new Signature(blssignaturesJNI.Signature_FromBytes__SWIG_1(SWIGTYPE_p_unsigned_char.getCPtr(data), SWIGTYPE_p_AggregationInfo.getCPtr(info)), true);
+  public static Signature FromBytes(byte [] data, SWIGTYPE_p_AggregationInfo info) {
+    return new Signature(blssignaturesJNI.Signature_FromBytes__SWIG_1(data, SWIGTYPE_p_AggregationInfo.getCPtr(info)), true);
   }
 
   public static Signature FromG2(SWIGTYPE_p_g2_t element) {
@@ -54,8 +54,8 @@ public class Signature extends BLSObject {
     return blssignaturesJNI.Signature_Verify(cPointer, this);
   }
 
-  public static Signature AggregateSigs(SWIGTYPE_p_std__vectorT_bls__Signature_t sigs) {
-    return new Signature(blssignaturesJNI.Signature_AggregateSigs(SWIGTYPE_p_std__vectorT_bls__Signature_t.getCPtr(sigs)), true);
+  public static Signature AggregateSigs(SignatureVector sigs) {
+    return new Signature(blssignaturesJNI.Signature_AggregateSigs(SignatureVector.getCPtr(sigs)), true);
   }
 
   public Signature DivideBy(SWIGTYPE_p_std__vectorT_bls__Signature_t divisorSigs) {

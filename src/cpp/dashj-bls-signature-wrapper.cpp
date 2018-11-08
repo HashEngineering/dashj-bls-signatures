@@ -6,6 +6,9 @@
  * coding conventions designed to improve portability and efficiency. Do not make
  * changes to this file unless you know what you are doing--modify the SWIG
  * interface file instead.
+ *
+ *  Hash Engineering Solutions
+ *
  * ----------------------------------------------------------------------------- */
 
 
@@ -305,6 +308,20 @@ SWIGINTERN int32_t std_vector_Sl_bn_t_Sm__Sg__size(std::vector< bn_t * > const *
               return self->size();
             }
 SWIGINTERN void std_vector_Sl_bn_t_Sm__Sg__removeRange(std::vector< bn_t * > *self,int32_t from,int32_t to){
+              self->erase(self->begin()+from, self->begin()+to);
+            }
+SWIGINTERN std::vector< bls::Signature >::const_reference std_vector_Sl_bls_Signature_Sg__get(std::vector< bls::Signature > const *self,int i){
+                return self->at(i);
+            }
+SWIGINTERN std::vector< bls::Signature >::value_type std_vector_Sl_bls_Signature_Sg__set(std::vector< bls::Signature > *self,int i,std::vector< bls::Signature >::value_type const &VECTOR_VALUE_IN){
+                const bls::Signature old = self->at(i);
+                self->at(i) = VECTOR_VALUE_IN;
+                return old;
+            }
+SWIGINTERN int32_t std_vector_Sl_bls_Signature_Sg__size(std::vector< bls::Signature > const *self){
+              return self->size();
+            }
+SWIGINTERN void std_vector_Sl_bls_Signature_Sg__removeRange(std::vector< bls::Signature > *self,int32_t from,int32_t to){
               self->erase(self->begin()+from, self->begin()+to);
             }
 
@@ -1426,16 +1443,22 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_InsecureSi
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_InsecureSignature_1FromBytes(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_InsecureSignature_1FromBytes(JNIEnv *jenv, jclass jcls, jbyteArray jarg1) {
   jlong jresult = 0 ;
   uint8_t *arg1 = (uint8_t *) 0 ;
   SwigValueWrapper< bls::InsecureSignature > result;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(uint8_t **)&jarg1; 
+  {
+    arg1 = (uint8_t *) jenv->GetByteArrayElements(jarg1, 0);
+  }
   result = bls::InsecureSignature::FromBytes((unsigned char const *)arg1);
   *(bls::InsecureSignature **)&jresult = new bls::InsecureSignature((const bls::InsecureSignature &)result); 
+  {
+    jenv->ReleaseByteArrayElements(jarg1, (jbyte *) arg1, 0);
+  }
+  
   return jresult;
 }
 
@@ -1596,21 +1619,27 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_Signature_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_Signature_1FromBytes_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_Signature_1FromBytes_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jbyteArray jarg1) {
   jlong jresult = 0 ;
   uint8_t *arg1 = (uint8_t *) 0 ;
   SwigValueWrapper< bls::Signature > result;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(uint8_t **)&jarg1; 
+  {
+    arg1 = (uint8_t *) jenv->GetByteArrayElements(jarg1, 0);
+  }
   result = bls::Signature::FromBytes((unsigned char const *)arg1);
   *(bls::Signature **)&jresult = new bls::Signature((const bls::Signature &)result); 
+  {
+    jenv->ReleaseByteArrayElements(jarg1, (jbyte *) arg1, 0);
+  }
+  
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_Signature_1FromBytes_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_Signature_1FromBytes_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jbyteArray jarg1, jlong jarg2) {
   jlong jresult = 0 ;
   uint8_t *arg1 = (uint8_t *) 0 ;
   AggregationInfo *arg2 = 0 ;
@@ -1618,7 +1647,9 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_Signature_
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(uint8_t **)&jarg1; 
+  {
+    arg1 = (uint8_t *) jenv->GetByteArrayElements(jarg1, 0);
+  }
   arg2 = *(AggregationInfo **)&jarg2;
   if (!arg2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "AggregationInfo const & reference is null");
@@ -1626,6 +1657,10 @@ SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_Signature_
   } 
   result = bls::Signature::FromBytes((unsigned char const *)arg1,(AggregationInfo const &)*arg2);
   *(bls::Signature **)&jresult = new bls::Signature((const bls::Signature &)result); 
+  {
+    jenv->ReleaseByteArrayElements(jarg1, (jbyte *) arg1, 0);
+  }
+  
   return jresult;
 }
 
@@ -2907,6 +2942,203 @@ SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_delete_1Big
   (void)jenv;
   (void)jcls;
   arg1 = *(std::vector< bn_t * > **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_new_1SignatureVector_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::vector< bls::Signature > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::vector< bls::Signature > *)new std::vector< bls::Signature >();
+  *(std::vector< bls::Signature > **)&jresult = result; 
+  return jresult;
+}
+
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_new_1SignatureVector_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< bls::Signature > *arg1 = 0 ;
+  std::vector< bls::Signature > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< bls::Signature > const & reference is null");
+    return 0;
+  } 
+  result = (std::vector< bls::Signature > *)new std::vector< bls::Signature >((std::vector< bls::Signature > const &)*arg1);
+  *(std::vector< bls::Signature > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  std::vector< bls::Signature >::size_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  result = ((std::vector< bls::Signature > const *)arg1)->capacity();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  std::vector< bls::Signature >::size_type arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  arg2 = (std::vector< bls::Signature >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  result = (bool)((std::vector< bls::Signature > const *)arg1)->empty();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1push_1back(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  std::vector< bls::Signature >::value_type *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  arg2 = *(std::vector< bls::Signature >::value_type **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< bls::Signature >::value_type const & reference is null");
+    return ;
+  } 
+  (arg1)->push_back((std::vector< bls::Signature >::value_type const &)*arg2);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  int arg2 ;
+  std::vector< bls::Signature >::value_type *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< bls::Signature >::value_type *) &std_vector_Sl_bls_Signature_Sg__get((std::vector< bls::Signature > const *)arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  
+  *(std::vector< bls::Signature >::value_type **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+  jlong jresult = 0 ;
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  int arg2 ;
+  std::vector< bls::Signature >::value_type *arg3 = 0 ;
+  SwigValueWrapper< bls::Signature > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(std::vector< bls::Signature >::value_type **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< bls::Signature >::value_type const & reference is null");
+    return 0;
+  } 
+  try {
+    result = std_vector_Sl_bls_Signature_Sg__set(arg1,arg2,(bls::Signature const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  
+  *(std::vector< bls::Signature >::value_type **)&jresult = new std::vector< bls::Signature >::value_type((const std::vector< bls::Signature >::value_type &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  int32_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  result = (int32_t)std_vector_Sl_bls_Signature_Sg__size((std::vector< bls::Signature > const *)arg1);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_SignatureVector_1removeRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  int32_t arg2 ;
+  int32_t arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
+  arg2 = (int32_t)jarg2; 
+  arg3 = (int32_t)jarg3; 
+  std_vector_Sl_bls_Signature_Sg__removeRange(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_org_dash_blssignatures_blssignaturesJNI_delete_1SignatureVector(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  std::vector< bls::Signature > *arg1 = (std::vector< bls::Signature > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(std::vector< bls::Signature > **)&jarg1; 
   delete arg1;
 }
 

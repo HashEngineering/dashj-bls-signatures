@@ -8,16 +8,16 @@
 
 package org.dash.blssignatures;
 
-public class ByteArrayVec extends java.util.AbstractList<SWIGTYPE_p_unsigned_char> {
+public class ByteArrayVector extends java.util.AbstractList<SWIGTYPE_p_unsigned_char> {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected ByteArrayVec(long cPtr, boolean cMemoryOwn) {
+  protected ByteArrayVector(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(ByteArrayVec obj) {
+  protected static long getCPtr(ByteArrayVector obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -35,23 +35,23 @@ public class ByteArrayVec extends java.util.AbstractList<SWIGTYPE_p_unsigned_cha
     }
   }
 
-  ByteArrayVec(java.util.Collection<SWIGTYPE_p_unsigned_char> e) {
+  ByteArrayVector(java.util.Collection<SWIGTYPE_p_unsigned_char> e) {
     this.reserve(e.size());
     for(SWIGTYPE_p_unsigned_char value: e) {
       this.push_back(value);
     }
   }
 
-  public ByteArrayVec() {
+  public ByteArrayVector() {
     this(blssignaturesJNI.new_ByteArrayVec__SWIG_0(), true);
   }
 
-  public ByteArrayVec(long n) {
+  public ByteArrayVector(long n) {
     this(blssignaturesJNI.new_ByteArrayVec__SWIG_1(n), true);
   }
 
-  public ByteArrayVec(ByteArrayVec o) {
-    this(blssignaturesJNI.new_ByteArrayVec__SWIG_2(ByteArrayVec.getCPtr(o), o), true);
+  public ByteArrayVector(ByteArrayVector o) {
+    this(blssignaturesJNI.new_ByteArrayVec__SWIG_2(ByteArrayVector.getCPtr(o), o), true);
   }
 
   public long capacity() {

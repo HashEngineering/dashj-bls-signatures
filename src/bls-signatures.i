@@ -83,6 +83,7 @@ using namespace bls; //this fixes many undefined symbols
 %apply uint8_t *UBYTE { const uint8_t *buffer };
 %apply uint8_t *UBYTE { const uint8_t *message };
 %apply uint8_t *UBYTE { const uint8_t *messageHash };
+%apply uint8_t *UBYTE { const uint8_t *data };
 %apply uint8_t *UBYTE { uint8_t *buffer };
 typedef unsigned int		uint32_t;
 %include vector.i
@@ -104,12 +105,12 @@ namespace bls {
 %include "bls-signatures/src/signature.hpp"
 %include "bls-signatures/src/aggregationinfo.hpp"
 
-%template(PublicKeyVec) std::vector<bls::PublicKey>;
-%template(PrivateKeyVec) std::vector<bls::PrivateKey>;
-%template(ByteArrayVec) std::vector<uint8_t*>;
-%template(BigIntegerVec) std::vector<bn_t*>;
-%template(PrivateKeyVec) std::vector<bls::AggregationInfo>;
-
+%template(PublicKeyVector) std::vector<bls::PublicKey>;
+%template(PrivateKeyVector) std::vector<bls::PrivateKey>;
+%template(ByteArrayVector) std::vector<uint8_t*>;
+%template(BigIntegerVector) std::vector<bn_t*>;
+%template(PrivateKeyVector) std::vector<bls::AggregationInfo>;
+%template(SignatureVector) std::vector<bls::Signature>;
 
 
 // declaration of class X, e.g. %include X.h
