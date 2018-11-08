@@ -8,31 +8,18 @@
 
 package org.dash.blssignatures;
 
-public class Signature {
-  private transient long swigCPtr;
-  protected transient boolean swigCMemOwn;
+public class Signature extends BLSObject {
 
   protected Signature(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
+    super(cPtr, cMemoryOwn);
   }
 
   protected static long getCPtr(Signature obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
-  }
-
-  protected void finalize() {
-    delete();
+    return (obj == null) ? 0 : obj.cPointer;
   }
 
   public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        blssignaturesJNI.delete_Signature(swigCPtr);
-      }
-      swigCPtr = 0;
-    }
+        blssignaturesJNI.delete_Signature(cPointer);
   }
 
   public static Signature FromBytes(SWIGTYPE_p_unsigned_char data) {
@@ -55,8 +42,8 @@ public class Signature {
     return new Signature(blssignaturesJNI.Signature_FromInsecureSig__SWIG_0(InsecureSignature.getCPtr(sig), sig), true);
   }
 
-  public static Signature FromInsecureSig(InsecureSignature sig, SWIGTYPE_p_AggregationInfo info) {
-    return new Signature(blssignaturesJNI.Signature_FromInsecureSig__SWIG_1(InsecureSignature.getCPtr(sig), sig, SWIGTYPE_p_AggregationInfo.getCPtr(info)), true);
+  public static Signature FromInsecureSig(InsecureSignature sig, AggregationInfo info) {
+    return new Signature(blssignaturesJNI.Signature_FromInsecureSig__SWIG_1(InsecureSignature.getCPtr(sig), sig, AggregationInfo.getCPtr(info)), true);
   }
 
   public Signature(Signature signature) {
@@ -64,7 +51,7 @@ public class Signature {
   }
 
   public boolean Verify() {
-    return blssignaturesJNI.Signature_Verify(swigCPtr, this);
+    return blssignaturesJNI.Signature_Verify(cPointer, this);
   }
 
   public static Signature AggregateSigs(SWIGTYPE_p_std__vectorT_bls__Signature_t sigs) {
@@ -72,24 +59,24 @@ public class Signature {
   }
 
   public Signature DivideBy(SWIGTYPE_p_std__vectorT_bls__Signature_t divisorSigs) {
-    return new Signature(blssignaturesJNI.Signature_DivideBy(swigCPtr, this, SWIGTYPE_p_std__vectorT_bls__Signature_t.getCPtr(divisorSigs)), true);
+    return new Signature(blssignaturesJNI.Signature_DivideBy(cPointer, this, SWIGTYPE_p_std__vectorT_bls__Signature_t.getCPtr(divisorSigs)), true);
   }
 
-  public SWIGTYPE_p_AggregationInfo GetAggregationInfo() {
-    long cPtr = blssignaturesJNI.Signature_GetAggregationInfo(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_AggregationInfo(cPtr, false);
+  public AggregationInfo GetAggregationInfo() {
+    long cPtr = blssignaturesJNI.Signature_GetAggregationInfo(cPointer, this);
+    return (cPtr == 0) ? null : new AggregationInfo(cPtr, false);
   }
 
-  public void SetAggregationInfo(SWIGTYPE_p_AggregationInfo newAggregationInfo) {
-    blssignaturesJNI.Signature_SetAggregationInfo(swigCPtr, this, SWIGTYPE_p_AggregationInfo.getCPtr(newAggregationInfo));
+  public void SetAggregationInfo(AggregationInfo newAggregationInfo) {
+    blssignaturesJNI.Signature_SetAggregationInfo(cPointer, this, AggregationInfo.getCPtr(newAggregationInfo));
   }
 
   public void Serialize(byte[] buffer) {
-    blssignaturesJNI.Signature_Serialize__SWIG_0(swigCPtr, this, buffer);
+    blssignaturesJNI.Signature_Serialize__SWIG_0(cPointer, this, buffer);
   }
 
   public SWIGTYPE_p_std__vectorT_unsigned_char_t Serialize() {
-    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.Signature_Serialize__SWIG_1(swigCPtr, this), true);
+    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.Signature_Serialize__SWIG_1(cPointer, this), true);
   }
 
   public final static long SIGNATURE_SIZE = blssignaturesJNI.Signature_SIGNATURE_SIZE_get();

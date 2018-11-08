@@ -8,31 +8,19 @@
 
 package org.dash.blssignatures;
 
-public class PublicKey {
-  private transient long swigCPtr;
-  protected transient boolean swigCMemOwn;
+public class PublicKey extends BLSObject{
 
   protected PublicKey(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
-    swigCPtr = cPtr;
+    super(cPtr, cMemoryOwn);
   }
 
   protected static long getCPtr(PublicKey obj) {
-    return (obj == null) ? 0 : obj.swigCPtr;
+    return (obj == null) ? 0 : obj.cPointer;
   }
 
-  protected void finalize() {
-    delete();
-  }
 
   public synchronized void delete() {
-    if (swigCPtr != 0) {
-      if (swigCMemOwn) {
-        swigCMemOwn = false;
-        blssignaturesJNI.delete_PublicKey(swigCPtr);
-      }
-      swigCPtr = 0;
-    }
+        blssignaturesJNI.delete_PublicKey(cPointer);
   }
 
   public static PublicKey FromBytes(byte[] key) {
@@ -56,15 +44,15 @@ public class PublicKey {
   }
 
   public void Serialize(byte[] buffer) {
-    blssignaturesJNI.PublicKey_Serialize__SWIG_0(swigCPtr, this, buffer);
+    blssignaturesJNI.PublicKey_Serialize__SWIG_0(cPointer, this, buffer);
   }
 
   public SWIGTYPE_p_std__vectorT_unsigned_char_t Serialize() {
-    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.PublicKey_Serialize__SWIG_1(swigCPtr, this), true);
+    return new SWIGTYPE_p_std__vectorT_unsigned_char_t(blssignaturesJNI.PublicKey_Serialize__SWIG_1(cPointer, this), true);
   }
 
   public long GetFingerprint() {
-    return blssignaturesJNI.PublicKey_GetFingerprint(swigCPtr, this);
+    return blssignaturesJNI.PublicKey_GetFingerprint(cPointer, this);
   }
 
   public final static long PUBLIC_KEY_SIZE = blssignaturesJNI.PublicKey_PUBLIC_KEY_SIZE_get();
