@@ -3,6 +3,7 @@ package org.dash.bls;
 import org.dash.bls.BLSPublicKey;
 import org.dash.blssignatures.*;
 
+import java.math.BigInteger;
 import java.util.AbstractList;
 
 import static org.dash.blssignatures.PublicKey.PUBLIC_KEY_SIZE;
@@ -106,6 +107,12 @@ public class DashBlsJni {
         sigs.push_back(sig1);
         sigs.push_back(sig2);
         Signature aggSig = Signature.AggregateSigs(sigs);
+
+        byte [] buffer = new byte [(int)Signature.SIGNATURE_SIZE];
+        aggSig.Serialize(buffer);
+
+        BigInteger bi = new BigInteger(buffer);
+        System.out.println(bi.toString(16));
 
 // For same message, public keys can be aggregated into one.
 // The signature can be verified the same as a single signature,
